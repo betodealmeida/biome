@@ -71,10 +71,10 @@ def find_notes(state: State) -> Iterator[Message]:
             continue
 
         velocity = int((group / 10) * 127)
-        note = random.choices(notes, weights)[0]
         message = "note_on" if velocity > 0 else "note_off"
+        note = random.choices(notes, weights)[0]
 
-        yield Message(message, note=note, velocity=velocity)
+        yield Message(message, channel=0, note=note, velocity=velocity)
 
 
 state = initial_state
